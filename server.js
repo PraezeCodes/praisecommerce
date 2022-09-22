@@ -22,6 +22,7 @@ myapp.get('/', function(req, res) {
    res.sendFile( __dirname);
    res.sendFile(path.join(__dirname + '/commerce/index.html'));
 });
+myapp.use(express.static(__dirname + '/commerce'));
 
 
 const portr = process.env.PORT || 3000;
