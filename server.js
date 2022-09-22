@@ -19,8 +19,7 @@ next();
 });
 
 myapp.get('/', function(req, res) {
-   res.sendFile( __dirname);
-   res.sendFile(path.join(__dirname + '/commerce/index.html'));
+    res.send("<h1>Hello World!</h1>");
 });
 myapp.use(express.static(__dirname + '/commerce'));
 
