@@ -21,7 +21,7 @@ next();
 myapp.get('/', function(req, res) {
     res.send("<h1>Hello World!</h1>");
 });
-
+myapp.use(express.static(__dirname + '/commerce'));
 
 
 const portr = process.env.PORT || 3000;
