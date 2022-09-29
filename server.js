@@ -21,10 +21,7 @@ next();
 myapp.get('/', function(req, res) {
     res.send("<h1>Hello World!</h1>");
 });
-myapp.use(express.static(__dirname + '/commerce'));
 
-myapp.use(bodyParser.urlencoded({ extended:true }))
-myapp.use(bodyParser.json());
 
 const portr = process.env.PORT || 3000;
 
