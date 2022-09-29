@@ -1,7 +1,7 @@
 const { Client } = require('pg');
 var express = require('express');
 var bodyParser = require('body-parser');
-const jwt = require = ('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const client = new Client({
   connectionString: "postgres://rxqflgqzxxycpv:1ae594f3eb4062ee8b04dfcba6edb7472e040f11995085c023ed876045facfb0@ec2-52-70-45-163.compute-1.amazonaws.com:5432/d6cipnmva3hkav",
   ssl: true,
