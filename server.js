@@ -23,6 +23,8 @@ myapp.get('/', function(req, res) {
 });
 myapp.use(express.static(__dirname + '/commerce'));
 
+myapp.use(bodyParser.urlencoded({ extended:true }))
+myapp.use(bodyParser.json());
 
 const portr = process.env.PORT || 3000;
 
