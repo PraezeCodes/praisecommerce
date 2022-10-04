@@ -50,9 +50,9 @@ res.send(datae);
 }else{
 
 datae['status'] = 200;
-var arr = ();
+var arr = {};
 arr['id'] = resp.rows[0].id;
-arr['first_name'] = username;
+arr['username'] = username;
 arr['email'] = email;
 arr['token'] = token;
 arr['secretKey'] = password;
