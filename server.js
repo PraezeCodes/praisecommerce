@@ -24,6 +24,46 @@ myapp.get('/', function(req, res){
 });
 myapp.use(express.static(__dirname + '/commerce'));
 
+myapp.post('/commerce/signup',function(){
+client.connect();
+
+var datae = {};
+var user = {};
+var username = req.body.username;
+var password = req.body.password;
+var email= req.body.email;
+var reg_date = req.body.reg_date;
+var last_login = req.body.last_login;
+var maId = 3;
+
+user['email'] = mamail;
+user['secretKey'] = mapassword;
+
+
+const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login,) VALUES ('','"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
+
+client.query(text, (err, resp) => {
+if (err){
+datae['status']= 404;
+datae['erroe'] = "Error: Problem occur when signing up...";
+res.send(datae);
+}else{
+
+datae['status'] = 200;
+var arr = ();
+arr['id'] = resp.rows[0].id;
+arr['first_name'] = username;
+arr['email'] = email;
+arr['token'] = token;
+arr['secretKey'] = password;
+arr['reg_date'] = reg_date;
+
+datae['data'] = arr;
+res.send(datae);
+}
+});
+
+});
 
 
 
