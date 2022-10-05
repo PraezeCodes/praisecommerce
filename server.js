@@ -24,7 +24,7 @@ myapp.get('/', function(req, res){
 });
 myapp.use(express.static(__dirname + '/commerce'));
 
-myapp.post('/auth/signup',function(){
+myapp.post('/auth/signup',function(req, res){
 client.connect();
 
 var datae = {};
