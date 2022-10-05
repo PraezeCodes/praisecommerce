@@ -9,6 +9,7 @@
  <div class="signup_container">
   <div class="welcome">WELCOME!</div>
     <div class="form">
+	<div id="load"><img src="giphy.gif"/></div>
      <form id="form">
 	  <div>
        <input type="text" name="username" id="username" placeholder="Your Username" required/><br>
@@ -19,11 +20,41 @@
 	   <input type="checkbox" name="password-check" id="password-check"/>
        Remember Me
       </div>
-	  <button  class="create"><a href="#">Create account</a></button>
+	  <button  class="create" id="click"><a href="#">Create account</a></button>
 	  
      </form>
     </div>
  </div>
 </center>
+<script>
+$(document).ready(function(e){
+$("#click").on('click',(function(e) {
+
+
+$('.class').empty();
+$('#load').show();
+var myapp = {};
+myapp['username'] = $('#username').val();
+myapp['email'] = $('#email').val();
+myapp['password'] = $('#password').val();
+
+$.ajax({
+url: "/auth/signup",
+type: "POST",
+data:JSON.stringify(myapp),
+contentType: false,
+processData: false,
+success: function(data)
+{
+$('#load').hide();
+console.log(data);
+
+$(".class").html('<h2>'+ data + '</h2>');
+
+}
+});
+}));
+});
+</script>
 </body>
 </html>
