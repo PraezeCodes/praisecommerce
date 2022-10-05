@@ -24,7 +24,7 @@ myapp.get('/', function(req, res){
 });
 myapp.use(express.static(__dirname + '/commerce'));
 
-myapp.post('/commerce/signup',function(){
+myapp.post('/auth/signup',function(){
 client.connect();
 
 var datae = {};
@@ -36,8 +36,8 @@ var reg_date = req.body.reg_date;
 var last_login = req.body.last_login;
 var maId = 3;
 
-user['email'] = mamail;
-user['secretKey'] = mapassword;
+user['email'] = email;
+user['secretKey'] = password;
 
 
 const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login,) VALUES ('','"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
