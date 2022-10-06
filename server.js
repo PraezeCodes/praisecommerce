@@ -59,6 +59,7 @@ arr['secretKey'] = password;
 arr['reg_date'] = reg_date;
 
 datae['data'] = arr;
+datae['message'] = "Your registration was successful";
 res.send(datae);
 }
 });
