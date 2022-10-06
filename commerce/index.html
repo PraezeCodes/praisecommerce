@@ -38,6 +38,10 @@ var myapp = {};
 myapp['username'] = $('#username').val();
 myapp['email'] = $('#email').val();
 myapp['password'] = $('#password').val();
+var reg = new Date().valueOf();
+var login = new Date().valueOf();
+myapp['reg_date'] = reg;
+myapp['last_login'] = login;
 
 $.ajax({
 url: "/auth/signup",
