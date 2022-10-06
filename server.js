@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const client = new Client({
   connectionString: "postgres://qdyuodaxrolgjb:40d0c9eceda93438fbe662067436e0e5d1d5e3e6f95c5099844b38a8e645bca9@ec2-52-70-86-157.compute-1.amazonaws.com:5432/de3s7pn71jrsv",
-  ssl: { rejectUnauthorized: false },
+  ssl: true,
 }) 
 
 client.connect();
@@ -40,7 +40,7 @@ user['email'] = email;
 user['secretKey'] = password;
 
 
-const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login,) VALUES ('','"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
+const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login,) VALUES (DEFAULT,'"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
 
 client.query(text, (err, resp) => {
 if (err){
@@ -52,7 +52,7 @@ res.send(datae);
 datae['status'] = 200;
 var arr = {};
 arr['id'] = resp.rows[0].id;
-arr['username'] = username;
+arr['first_name'] = username;
 arr['email'] = email;
 arr['token'] = token;
 arr['secretKey'] = password;
@@ -60,12 +60,10 @@ arr['reg_date'] = reg_date;
 
 datae['data'] = arr;
 datae['message'] = "Your registration was successful";
-res.send(datae);
 }
 });
-
+res.send(datae);
 });
-
 
 
 const portr = process.env.PORT || 3000;
