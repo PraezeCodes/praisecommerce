@@ -1,8 +1,8 @@
-import sslRedirect from 'heroku-ssl-redirect';
 const { Client } = require('pg');
 var express = require('express');
 var bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const sslRedirect = require('heroku-ssl-redirect').default
 const client = new Client({
   connectionString: "postgres://qdyuodaxrolgjb:40d0c9eceda93438fbe662067436e0e5d1d5e3e6f95c5099844b38a8e645bca9@ec2-52-70-86-157.compute-1.amazonaws.com:5432/de3s7pn71jrsv",
   ssl: {rejectUnauthorized: false},
