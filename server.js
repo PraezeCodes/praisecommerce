@@ -23,6 +23,8 @@ myapp.get('/', function(req, res){
    res.sendFile(path.join(__dirname + '/commerce/index.html'));
 });
 myapp.use(express.static(__dirname + '/commerce'));
+myapp.use(bodyParser.urlencoded({ extended:true }))
+myapp.use(bodyParser.json());
 
 myapp.post('/auth/signup',function(req, res){
 client.connect();
