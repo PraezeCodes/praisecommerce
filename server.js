@@ -42,7 +42,7 @@ user['email'] = email;
 user['secretKey'] = password;
 
 
-const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login,) VALUES (DEFAULT,'"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
+const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login) VALUES (DEFAULT,'"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
 
 client.query(text, (err, resp) => {
 if (err){
