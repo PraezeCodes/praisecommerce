@@ -40,6 +40,13 @@ var maId = 3;
 
 user['email'] = email;
 user['secretKey'] = password;
+jwt.sign(user, password, { expiresIn: '1h'},(errt, token) => {
+
+if(errt){
+datae['status'] = 404;
+datae['error'] = "Error: Connection Not Secure...";
+res.send(datae);
+}else{
 
 
 const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login) VALUES (DEFAULT,'"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
@@ -63,6 +70,8 @@ arr['reg_date'] = reg_date;
 datae['data'] = arr;
 datae['message'] = "Your registration was successful";
 res.send(datae);
+}
+});
 }
 });
 });
